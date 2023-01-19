@@ -1,8 +1,6 @@
-import { DB, PS } from "./token.js"
+export const Prefix = '>'
 
 export const Username = 'frackzdk'
-export const Password = PS
+export const Password = 'oauth:' // https://twitchapps.com/tmi/
 
 export const Channel = 'frackzdk'
-
-export const Database = DB

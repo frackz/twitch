@@ -1,28 +1,17 @@
-export const Path = 'events/'
+export const Path = 'commands/'
 
 var commands = {}
 
+import { Prefix } from "../config.js"
+
 export const Event = 'message'
 export const Executor = (client, channel: string, tags, message: string) => {
-    if (message[0] == '>') {
-        const split = message.split(' ')
-        const cmd = split[0].replace('>','')
+    if (message[0] == Prefix) {
+        const data = commands[(message.split(' ')[0].replace(Prefix,''))]
+        if (data == null) return
 
-        const data = commands[cmd]
-
-        if (data != null) {
-            data(
-                client,
-                channel,
-                tags,
-                message
-            )
-        }
+        data(client, channel, tags, message)
     }
 }
 
-export const Init = (bot, files: Array<any>) => {
-    files.forEach(e => {
-        commands[e.Name] = e.Executor
-    })
-}
+export const Init = (bot, files: Array<any>) => files.forEach(e => commands[e.Name] = e.Executor)
