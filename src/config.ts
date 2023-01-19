@@ -1,6 +1,8 @@
-export const Username = 'frackzdk'
-export const Password = ''
+import { DB, PS } from "./token.js"
 
-export const Channels = new Array<String>(
-    'frackzdk'
-)
+export const Username = 'frackzdk'
+export const Password = PS
+
+export const Channel = 'frackzdk'
+
+export const Database = DB
